@@ -1,21 +1,59 @@
-# voxeltron-sdk-typescript
+# @voxeltron/plugin-sdk
 
-TypeScript SDK for Voxeltron.
+SDK for building Voxeltron plugins in JavaScript/TypeScript.
 
-## Status
+This in-repo SDK surface is Apache-2.0 licensed and should be treated as `0.x` pre-stable while the dedicated public SDK repo is being prepared.
 
-This repository is part of the April 17, 2026 Voxeltron org-restructure plan.
-The SDK is still staged in the main public repo during the transition:
+## Installation
 
-- upstream path: `plugins/sdk/js/`
-- upstream repo: `deep-thinking-llc/voxeltron`
+```bash
+npm install @voxeltron/plugin-sdk
+```
 
-## Planned Contents
+## Quick Start
 
-- typed TypeScript client for public Voxeltron APIs
-- browser and Node integration examples
-- release cadence decoupled from the daemon binary
+```typescript
+import { definePlugin, log, Context } from '@voxeltron/plugin-sdk';
+
+export default definePlugin({
+  info: {
+    name: 'my-plugin',
+    version: '1.0.0',
+    description: 'My Voxeltron plugin',
+    author: 'Your Name',
+  },
+  hooks: {
+    onDeploySuccess: async (ctx: Context) => {
+      log('info', `Deploy succeeded: ${ctx.projectId}`);
+    },
+  },
+});
+```
+
+## Building
+
+```bash
+npx tsc
+```
+
+## API Reference
+
+### definePlugin(definition)
+
+Creates a plugin definition.
+
+### Types
+
+- `Context`: Hook context
+- `PluginInfo`: Plugin metadata
+- `HookHandler`: Hook function type
+
+### Host Functions
+
+- `log(level, message)`: Log a message
+- `getConfig(key)`: Get configuration value (async)
+- `sendWebhook(url, body)`: Send HTTP webhook (async)
 
 ## License
 
-Apache-2.0. See `LICENSE`.
+Apache-2.0

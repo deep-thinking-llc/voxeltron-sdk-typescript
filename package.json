@@ -1,0 +1,34 @@
+{
+  "name": "@voxeltron/plugin-sdk",
+  "version": "0.1.0",
+  "description": "SDK for building Voxeltron plugins in JavaScript/TypeScript",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "bun test"
+  },
+  "keywords": [
+    "voxeltron",
+    "plugin",
+    "sdk",
+    "paas"
+  ],
+  "author": "Voxeltron Contributors",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deep-thinking-llc/voxeltron-sdk-typescript.git"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "typescript": "^5"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}
